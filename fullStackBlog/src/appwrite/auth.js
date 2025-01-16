@@ -44,6 +44,8 @@ export class AuthService {
 		} catch (error) {
 			console.log('Error :: getCurrentUser()', error);
 		}
+
+		return null;
 	}
 
 	async logout() {
