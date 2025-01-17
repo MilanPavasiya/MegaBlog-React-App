@@ -32,7 +32,7 @@ export class Service {
 			return await this.databases.updateDocument(
 				conf.appwriteDatabaseId,
 				conf.appwriteCollectionId,
-				ID.unique(),
+				slug,
 				{ title, content, featuredImage, status }
 			);
 		} catch (error) {
@@ -101,6 +101,16 @@ export class Service {
 			return true;
 		} catch (error) {
 			console.log('Appwrite service :: uploadfile :: error', error);
+			return false;
+		}
+	}
+
+	async downloadFile(fileId) {
+		try {
+			await this.storage.getFileDownload(conf.appwriteStorageId, fileId);
+			return true;
+		} catch (error) {
+			console.log('Appwrite service :: downloadFile :: error', error);
 			return false;
 		}
 	}
