@@ -107,7 +107,7 @@ export class Service {
 
 	async downloadFile(fileId) {
 		try {
-			await this.storage.getFileDownload(conf.appwriteStorageId, fileId);
+			this.storage.getFileDownload(conf.appwriteStorageId, fileId);
 			return true;
 		} catch (error) {
 			console.log('Appwrite service :: downloadFile :: error', error);
